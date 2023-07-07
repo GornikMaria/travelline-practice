@@ -12,7 +12,7 @@ public class Square : IShape
     {
         if (sideLength < 0)
         {
-            throw new ArgumentException("Длина стороны не может быть отрицательной.");
+            throw new ArgumentException("Длина стороны не может быть отрицательной");
         }
 
         this.sideLength = sideLength;
@@ -37,6 +37,10 @@ public class Triangle : IShape
 
     public Triangle(double sideA, double sideB, double sideC)
     {
+        if (sideA < 0 || sideB < 0 || sideC < 0)
+        {
+            throw new ArgumentException("Длина стороны не может быть отрицательной");
+        }
         this.sideA = sideA;
         this.sideB = sideB;
         this.sideC = sideC;
@@ -61,6 +65,10 @@ public class Circle : IShape
 
     public Circle(double radius)
     {
+        if (radius < 0)
+        {
+            throw new ArgumentException("Радиус не может быть отрицательным");
+        }
         this.radius = radius;
     }
 
