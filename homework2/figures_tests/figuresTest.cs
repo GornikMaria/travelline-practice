@@ -2,7 +2,7 @@ using NUnit.Framework;
 
 namespace figures_tests
 {
-    [TestFixture]
+    [Test]
     public class figuresTest
     {
         private Square square;
