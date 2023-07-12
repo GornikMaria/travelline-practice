@@ -24,7 +24,7 @@ CREATE TABLE Car (
     IdClient int not null CONSTRAINT FK_Car_Client REFERENCES Client(IdClient)
 );
 
---3.1 Íàïèñàòü INSERT íà êàæäóþ òàáëèöó
+--3.1 Написать INSERT на каждую таблицу
 -- Client
 INSERT INTO Client (Birthday, Name, Address) VALUES ('2020-12-12', 'Àëåêñàíäð', 'Óñïåíñêàÿ, ä.13');
 INSERT INTO Client (Birthday, Name, Address) VALUES ('1940-02-02', 'Âëàäèìèð', 'Êðàéîâñêàÿ, ä.42');
@@ -35,12 +35,12 @@ INSERT INTO BookingData (IdClient, StartDate, EndDate, Pay) VALUES (3, '2014-02-
 INSERT INTO BookingData (IdClient, StartDate, EndDate, Pay) VALUES (2, '2014-02-02', '2014-02-03', 230);
 INSERT INTO BookingData (IdClient, StartDate, EndDate, Pay) VALUES (1, '2014-02-02', '2014-02-03', 10);
 
--- Ñar
+-- Car
 INSERT INTO Car(IdClient, Name, CreationDate, Price, Rating) VALUES (1, 'Toyota Camry', '1940-02-02', 20000, 1);
 INSERT INTO Car (IdClient, CreationDate, Name, Price, Rating) VALUES (2, 'Honda Civic', '2004-02-02', 30123, 3);
 INSERT INTO Car (IdClient, CreationDate, Name, Price, Rating) VALUES (3, 'BMW X5', '1980-02-02', 4123123, 3);
 
--- 3.2 SELECT (èñïîëüçóÿ êàæäûé ðàññìîòðåííûé íà ïàðå ïðåäèêàò, + ïàðó ëîãè÷åñêèõ îïåðàöèé (and, or, not, ...), íå ìåíåå 8 øòóê)
+-- 3.2 SELECT (используя каждый рассмотренный на паре предикат, + пару логических операций (and, or, not, ...), не менее 8 штук)
 SELECT * FROM Client WHERE Name = 'Àëåêñàíäð';
 SELECT * FROM Client WHERE Address != 'Ìîëîäåæíàÿ, ä. 5';
 SELECT * FROM BookingData WHERE Pay > 10;
