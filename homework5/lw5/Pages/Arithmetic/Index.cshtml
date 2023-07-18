@@ -1,0 +1,151 @@
+﻿@page
+@model lw5.Pages.Arithmetic.IndexModel
+@{
+    ViewData["Title"] = "Arithmetic Calculator";
+}
+
+<style>
+    .column {
+        font-family: 'Courier New', Courier, monospace;
+        display: inline-block;
+        padding: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+    }
+
+    .cell {
+        display: block;
+        text-align: right;
+        margin-bottom: 4px;
+        position: relative;
+    }
+
+        .cell::before {
+            content: attr(data-remembered);
+            font-size: 12px;
+            position: absolute;
+            top: -20px;
+            left: 0;
+            color: red;
+        }
+
+    .operator {
+        margin-right: 40px;
+    }
+</style>
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <label>Первое число:</label>
+    <input type="number" asp-for="Number1" required>
+    <br>
+    <label>Операция:</label>
+    <select asp-for="Operator" asp-items="Model.OperatorList">
+    </select>
+    <br>
+    <label>Второе число:</label>
+    <input type="number" asp-for="Number2" required>
+    <br>
+    <button type="submit">=</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Result))
+{
+    <h3>Результат сложения/вычитания столбиком:</h3>
+    <div class="column">
+        @if (Model.Operator == "add" && Model.Number1 != null && Model.Number2 != null)
+        {
+            var maxLength = Math.Max(Model.Number1.ToString().Length, Model.Number2.ToString().Length);
+            var number1Padded = Model.Number1.ToString().PadLeft(maxLength, ' ');
+            var number2Padded = Model.Number2.ToString().PadLeft(maxLength, ' ');
+            var resultPadded = Model.Result?.ToString().PadLeft(maxLength, ' ') ?? "";
+            var dashes = new string('-', maxLength);
+
+            <div class="row">
+                <span class="cell">@number1Padded</span>
+            </div>
+            <div class="row">
+                <span class="operator">+</span>
+            </div>
+            <div class="row">
+                <span class="cell">@number2Padded</span>
+            </div>
+            <div class="row">
+                <span class="cell">@dashes</span>
+            </div>
+            @if (Model.Result != "0")
+            {
+                <div class="row">
+                    <span class="cell">@resultPadded</span>
+                </div>
+            }
+        }
+
+        else if (Model.Operator == "subtract")
+        {
+            var maxLength = Math.Max(Model.Number1.ToString().Length, Model.Number2.ToString().Length);
+            var number1Padded = Model.Number1.ToString().PadLeft(maxLength, ' ');
+            var number2Padded = Model.Number2.ToString().PadLeft(maxLength, ' ');
+            var resultPadded = Model.Result.ToString().PadLeft(maxLength, ' ');
+            var dashes = new string('-', maxLength);
+
+            if (Model.Number1 >= Model.Number2)
+            {
+                <div class="row">
+                    <span class="cell">@number1Padded</span>
+                </div>
+                <div class="row">
+                    <span class="operator">-</span>
+                </div>
+                <div class="row">
+                    <span class="cell">@number2Padded</span>
+                </div>
+                <div class="row">
+                    <span class="cell">@dashes</span>
+                </div>
+                @if (Model.Result != "0")
+                {
+                    <div class="row">
+                        <span class="cell">@resultPadded</span>
+                    </div>
+                }
+
+            }
+            else
+            {
+                var borrowIndex = Model.Number1.ToString().Length - Model.Number2.ToString().Length;
+                <div class="row">
+                    <span class="cell" data-borrowed="1">@number1Padded</span>
+                </div>
+                for (var i = 0; i < borrowIndex; i++)
+                {
+                    <div class="row">
+                        <span class="cell"></span>
+                    </div>
+                }
+                <div class="row">
+                    <span class="operator">-</span>
+                </div>
+                <div class="row">
+                    <span class="cell">@number2Padded</span>
+                </div>
+                <div class="row">
+                    <span class="cell">@dashes</span>
+                </div>
+                @if (Model.Result != "0")
+                {
+                    <div class="row">
+                        <span class="cell">@resultPadded</span>
+                    </div>
+                }
+
+            }
+        }
+    </div>
+}
