@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Swagger-killer</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <h1>Swagger-killer</h1>
+  <div>
+    <h2>Получение конкретного пользователя</h2>
+    <label for="getUserById">ID пользователя:</label>
+    <input type="text" id="getUserById">
+    <button id="getUserButton">Отправить запрос</button>
+    <h3>Ответ:</h3>
+    <pre id="getUserResponse"></pre>
+  </div>
+  <div>
+    <h2>Получение списка пользователей</h2>
+    <button id="apiGetAll">Отправить запрос</button>
+    <h3>Ответ:</h3>
+    <pre id="getUsersResponse"></pre>
+  </div>
+  <div>
+    <h2>Добавление конкретного пользователя</h2>
+    <label for="getUserById">ID пользователя:</label>
+    <textarea id="textarea-request-create" rows="4" cols="50"></textarea>
+    <button id="apiCreateUser">Отправить запрос</button>
+    <h3>Ответ:</h3>
+    <pre id="createOneResponseTextarea"></pre>
+  </div>
+  <div>
+    <h2>Обновление данных пользователя</h2>
+    <label for="updateUserById">ID пользователя:</label>
+    <input type="text" id="updateUserById">
+    <label for="updateUserRequestBody">JSON-данные запроса:</label>
+    <textarea id="updateUserRequestBody" rows="4" cols="50"></textarea>
+    <button id="updateUserButton">Отправить запрос</button>
+    <h3>Ответ:</h3>
+    <pre id="updateUserResponse"></pre>
+  </div>
+  <div>
+    <h2>Удаление пользователя</h2>
+    <label for="deleteUserById">ID пользователя:</label>
+    <input type="text" id="deleteUserById">
+    <button id="deleteUserButton">Отправить запрос</button>
+    <h3>Ответ:</h3>
+    <pre id="deleteUserResponse"></pre>
+  </div>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
