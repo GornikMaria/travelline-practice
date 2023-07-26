@@ -166,7 +166,7 @@ namespace BookingCar
             _carRepository.SaveChanges();
         }
 
-        public static void ListClients()
+        public static void PrintListOfClients()
         {
             foreach (var client in _clientRepository.GetAll())
             {
@@ -174,7 +174,7 @@ namespace BookingCar
             }
         }
 
-        public static void ListBookingData()
+        public static void PrintListOfBookingData()
         {
             foreach (var bookingData in _bookingDataRepository.GetAll())
             {
@@ -182,7 +182,7 @@ namespace BookingCar
             }
         }
 
-        public static void ListCars()
+        public static void PrintListOfCars()
         {
             foreach (var car in _carRepository.GetAll())
             {
