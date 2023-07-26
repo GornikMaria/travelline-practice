@@ -27,42 +27,67 @@ namespace BookingCar
 
         public static void ProcessCommands()
         {
-            while (true)
+            bool exitRequested = false;
+
+            while (!exitRequested)
             {
-                Console.Write("Enter command: ");
-                string[] commandLine = Console.ReadLine().Split(' ');
-                string command = commandLine[0];
-                List<string> parameters = commandLine.Skip(1).ToList();
-                switch (command)
+                Console.WriteLine("Menu:");
+                Console.WriteLine("1) Ввести команду");
+                Console.WriteLine("2) Выйти из программы");
+
+                Console.Write("Выберите опцию: ");
+                string option = Console.ReadLine();
+
+                switch (option)
                 {
-                    case "exit":
-                        return; 
-                    case "add-client":
-                        AddClient(parameters);
+                    case "1":
+                        Console.Write("Enter command: ");
+                        string[] commandLine = Console.ReadLine().Split(' ');
+                        string command = commandLine[0];
+                        List<string> parameters = commandLine.Skip(1).ToList();
+                        switch (command)
+                        {
+                            case "exit":
+                                exitRequested = true;
+                                break;
+                            case "add-client":
+                                AddClient(parameters);
+                                break;
+                            case "add-booking":
+                                AddBookingData(parameters);
+                                break;
+                            case "add-car":
+                                AddCar(parameters);
+                                break;
+                            case "delete-client":
+                                DeleteClient(parameters);
+                                break;
+                            case "delete-booking":
+                                DeleteBookingData(parameters);
+                                break;
+                            case "delete-car":
+                                DeleteCar(parameters);
+                                break;
+                            case "list-clients":
+                                ListClients();
+                                break;
+                            case "list-bookings":
+                                ListBookingData();
+                                break;
+                            case "list-cars":
+                                ListCars();
+                                break;
+                            default:
+                                Console.WriteLine("Некорректная команда.");
+                                break;
+                        }
                         break;
-                    case "add-booking":
-                        AddBookingData(parameters);
+                    case "2":
+                        Console.WriteLine("Программа завершена.");
+                        exitRequested = true;
                         break;
-                    case "add-car":
-                        AddCar(parameters);
-                        break;
-                    case "delete-client":
-                        DeleteClient(parameters);
-                        break;
-                    case "delete-booking":
-                        DeleteBookingData(parameters);
-                        break;
-                    case "delete-car":
-                        DeleteCar(parameters);
-                        break;
-                    case "list-clients":
-                        ListClients();
-                        break;
-                    case "list-bookings":
-                        ListBookingData();
-                        break;
-                    case "list-cars":
-                        ListCars();
+                    default:
+                        Console.WriteLine("Некорректная опция. Пожалуйста, выберите снова.");
                         break;
                 }
             }
