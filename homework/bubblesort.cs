@@ -24,7 +24,7 @@ for (int i = 0; i < n - 1; i++)
 Console.WriteLine("Массив после сортировки:");
 PrintArray(arr);
 
-void PrintArray(int[] arr)
+public void PrintArray(int[] arr)
 {
     foreach (int element in arr)
     {
