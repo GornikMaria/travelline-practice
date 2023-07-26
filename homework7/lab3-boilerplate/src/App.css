@@ -1,0 +1,13 @@
+.App {
+  display: block;
+}
+.rating {
+  float: right;
+}
+.selected {
+  color: orange;
+}
+
+h1 {
+  font-family: Inter;
+}

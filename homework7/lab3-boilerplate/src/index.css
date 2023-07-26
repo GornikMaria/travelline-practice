@@ -1,0 +1,102 @@
+:root {
+  font-family: Inter;
+  font-synthesis: none;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #fff;
+}
+h1 {
+  width: 307px;
+  font-family: Inter;
+  font-weight: normal;
+  font-size: 26px;
+  line-height: 31.47px;
+  letter-spacing: 1.5%;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  width: 119px;
+  height: 32px;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  transition: border-color 0.25s;
+  background-color:#0B51A3;
+  color: white;
+  margin-top: 10px;
+  margin-left: 275px;
+}
+.review-icon {
+  font-size: 40px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: black;
+  margin-bottom: 10px;
+}
+.review-container {
+  max-width: 394px;
+}
+
+.review-text {
+  word-wrap:break-word
+}
+
+textarea {
+  width: 383px;
+  height: 113px;
+  resize: none;
+  margin-bottom: 10px;
+  padding: 5px;
+  display: block;
+}
+
+button:hover {
+  border-color: #646cff;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #fff;
+  }
+
+  a:hover {
+    color: #747bff;
+  }
+
+  button {
+    background-color: rgb(11, 81, 163);
+    color: white;
+  }
+}
