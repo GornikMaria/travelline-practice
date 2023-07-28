@@ -26,7 +26,7 @@ namespace lw5.Pages.Arithmetic
 
         public void OnGet()
         {
-            // Пустой обработчик для HTTP GET запроса (если необходимо).
+            // Пустой обработчик для HTTP GET запроса (если необходимо)
         }
 
 
