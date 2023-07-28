@@ -26,9 +26,8 @@ namespace lw5.Pages.Arithmetic
 
         public void OnGet()
         {
-            // Пустой обработчик для HTTP GET запроса (если необходимо)
+            // РџСѓСЃС‚РѕР№ РѕР±СЂР°Р±РѕС‚С‡РёРє РґР»СЏ HTTP GET Р·Р°РїСЂРѕСЃР°
         }
-
 
         public void OnPost()
         {
@@ -45,7 +44,7 @@ namespace lw5.Pages.Arithmetic
         public List<int> RememberedValues { get; set; }
         public IndexModel()
         {
-            // Инициализируем список RememberedValues
+            // РРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј СЃРїРёСЃРѕРє RememberedValues
             RememberedValues = new List<int>();
         }
     }
