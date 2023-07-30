@@ -1,5 +1,5 @@
 {
-  "name": "lab3-boilerplate",
+  "name": "homework7",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -13,7 +13,8 @@
     "lint:stylelint": "stylelint --max-warnings=0 src/**/*.css",
     "prettier:fix": "prettier --write .",
     "preview": "vite preview",
-    "stylelint:fix": "stylelint --fix src/**/*.css"
+    "stylelint:fix": "stylelint --fix src/**/*.css",
+    "app-dev": "vite --open"
   },
   "dependencies": {
     "react": "^18.2.0",
