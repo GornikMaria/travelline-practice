@@ -1,9 +1,116 @@
 ﻿@page
-@model IndexModel
+@model lw5.Pages.Arithmetic.IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Arithmetic Calculator";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-</div>
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <label>Первое число:</label>
+    <input type="number" asp-for="Number1" required>
+    <br>
+    <label>Операция:</label>
+    <select asp-for="Operator" asp-items="Model.OperatorList">
+    </select>
+    <br>
+    <label>Второе число:</label>
+    <input type="number" asp-for="Number2" required>
+    <br>
+    <button type="submit">=</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Result))
+{
+    <h3>Результат сложения/вычитания столбиком:</h3>
+    <table>
+        @if (Model.Operator == "add" && Model.Number1 != null && Model.Number2 != null)
+        {
+            var maxLength = Math.Max(Model.Number1.ToString().Length, Model.Number2.ToString().Length);
+            var number1Padded = Model.Number1.ToString().PadLeft(maxLength, ' ');
+            var number2Padded = Model.Number2.ToString().PadLeft(maxLength, ' ');
+            var resultPadded = Model.Result?.ToString().PadLeft(maxLength, ' ') ?? "";
+            var dashes = new string('-', maxLength);
+
+            <tr>
+                <td>@number1Padded</td>
+            </tr>
+            <tr>
+                <td class="operator">+</td>
+            </tr>
+            <tr>
+                <td>@number2Padded</td>
+            </tr>
+            <tr>
+                <td>@dashes</td>
+            </tr>
+            @if (Model.Result != "0")
+            {
+                <tr>
+                    <td>@resultPadded</td>
+                </tr>
+            }
+        }
+        else if (Model.Operator == "subtract")
+        {
+            var maxLength = Math.Max(Model.Number1.ToString().Length, Model.Number2.ToString().Length);
+            var number1Padded = Model.Number1.ToString().PadLeft(maxLength, ' ');
+            var number2Padded = Model.Number2.ToString().PadLeft(maxLength, ' ');
+            var resultPadded = Model.Result.ToString().PadLeft(maxLength, ' ');
+            var dashes = new string('-', maxLength);
+
+            if (Model.Number1 >= Model.Number2)
+            {
+                <tr>
+                    <td>@number1Padded</td>
+                </tr>
+                <tr>
+                    <td class="operator">-</td>
+                </tr>
+                <tr>
+                    <td>@number2Padded</td>
+                </tr>
+                <tr>
+                    <td>@dashes</td>
+                </tr>
+                @if (Model.Result != "0")
+                {
+                    <tr>
+                        <td>@resultPadded</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                var borrowIndex = Model.Number1.ToString().Length - Model.Number2.ToString().Length;
+                <tr>
+                    <td data-borrowed="1">@number1Padded</td>
+                </tr>
+                @for (var i = 0; i < borrowIndex; i++)
+                {
+                    <tr>
+                        <td></td>
+                    </tr>
+                }
+                <tr>
+                    <td class="operator">-</td>
+                </tr>
+                <tr>
+                    <td>@number2Padded</td>
+                </tr>
+                <tr>
+                    <td>@dashes</td>
+                </tr>
+                @if (Model.Result != "0")
+                {
+                    <tr>
+                        <td>@resultPadded</td>
+                    </tr>
+                }
+            }
+        }
+    </table>
+}
+
+<!-- Подключение внешнего файла CSS -->
+<link rel="stylesheet" href="style.css">
