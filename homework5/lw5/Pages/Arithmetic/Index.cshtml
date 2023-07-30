@@ -4,41 +4,6 @@
     ViewData["Title"] = "Arithmetic Calculator";
 }
 
-<style>
-.column {
-    border: 1px solid #ccc;
-    display: inline-block;
-    font-family: 'Courier New', Courier, monospace;
-    padding: 5px;
-}
-
-.row {
-    align-items: flex-end;
-    display: flex;
-    flex-direction: row;
-}
-
-.cell {
-    display: block;
-    margin-bottom: 4px;
-    position: relative;
-    text-align: right;
-}
-
-.cell::before {
-    color: red;
-    content: attr(data-remembered);
-    font-size: 12px;
-    left: 0;
-    position: absolute;
-    top: -20px;
-}
-
-.operator {
-    margin-right: 40px;
-}
-</style>
-
 <h2>@ViewData["Title"]</h2>
 
 <form method="post">
@@ -146,3 +111,6 @@
         }
     </table>
 }
+
+<!-- Подключение внешнего файла CSS -->
+<link rel="stylesheet" href="style.css">

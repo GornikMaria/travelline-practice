@@ -1,0 +1,32 @@
+.column {
+    font-family: 'Courier New', Courier, monospace;
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.cell {
+    display: block;
+    text-align: right;
+    margin-bottom: 4px;
+    position: relative;
+}
+
+.cell::before {
+    content: attr(data-remembered);
+    font-size: 12px;
+    position: absolute;
+    top: -20px;
+    left: 0;
+    color: red;
+}
+
+.operator {
+    margin-right: 40px;
+}
