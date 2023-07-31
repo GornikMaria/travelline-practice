@@ -25,7 +25,7 @@ a:hover {
 body {
   display: flex;
   place-items: center;
-  justify-content: center; /* Добавляем этот стиль для центрирования по горизонтали */
+  justify-content: center;
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
